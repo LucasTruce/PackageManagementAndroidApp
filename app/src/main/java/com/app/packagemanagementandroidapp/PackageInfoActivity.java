@@ -39,7 +39,6 @@ public class PackageInfoActivity extends AppCompatActivity {
     Retrofit retrofit = builder.build();
 
     PackageService packageService = retrofit.create(PackageService.class);
-
     TextView packageNumber;
     TextView packageStatus;
     TextView packageSendDate;
@@ -77,6 +76,7 @@ public class PackageInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_package_info);
+        getSupportActionBar().setTitle("Informacje o paczce");
 
         packageNumber = findViewById(R.id.packageNumberView);
         packageStatus = findViewById(R.id.packageStatusView);

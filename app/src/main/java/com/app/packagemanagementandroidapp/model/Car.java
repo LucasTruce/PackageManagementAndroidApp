@@ -1,5 +1,8 @@
 package com.app.packagemanagementandroidapp.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,4 +15,5 @@ public class Car {
     private String licensePlate;
     private double capacity;
     private CarStatus carStatus;
+
 }

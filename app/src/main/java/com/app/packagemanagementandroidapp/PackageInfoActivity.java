@@ -1,29 +1,38 @@
 package com.app.packagemanagementandroidapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.app.packagemanagementandroidapp.model.Car;
 import com.app.packagemanagementandroidapp.model.Pack;
 
+import com.app.packagemanagementandroidapp.model.Warehouse;
+import com.app.packagemanagementandroidapp.service.CarService;
 import com.app.packagemanagementandroidapp.service.PackageService;
+import com.app.packagemanagementandroidapp.service.ServiceGenerator;
+import com.app.packagemanagementandroidapp.service.WarehouseService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,12 +42,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PackageInfoActivity extends AppCompatActivity {
 
-    Retrofit.Builder builder = new Retrofit.Builder()
-            .baseUrl("http://192.168.0.2:8080/")
-            .addConverterFactory(GsonConverterFactory.create());
-    Retrofit retrofit = builder.build();
+    PackageService packageService;
+    CarService carService;
+    WarehouseService warehouseService;
 
-    PackageService packageService = retrofit.create(PackageService.class);
     TextView packageNumber;
     TextView packageStatus;
     TextView packageSendDate;
@@ -70,13 +77,28 @@ public class PackageInfoActivity extends AppCompatActivity {
     TextView carCapacity;
     TextView carStatus;
 
+    Pack pack;
+    Car car;
+    Warehouse warehouse;
+
+    boolean carScan = false;
+    boolean warehouseScan = false;
+    boolean packScan = false;
+
+    SwipeRefreshLayout refreshLayout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_package_info);
-        getSupportActionBar().setTitle("Informacje o paczce");
+        ActionBar bar = getSupportActionBar();
+        bar.setTitle("Informacje o paczce");
+
+        SharedPreferences sharedPref = getSharedPreferences("pref", 0);
+        packageService = ServiceGenerator.createService(PackageService.class, sharedPref.getString("TOKEN", ""));
+        carService = ServiceGenerator.createService(CarService.class, sharedPref.getString("TOKEN", ""));
+        warehouseService = ServiceGenerator.createService(WarehouseService.class, sharedPref.getString("TOKEN", ""));
 
         packageNumber = findViewById(R.id.packageNumberView);
         packageStatus = findViewById(R.id.packageStatusView);
@@ -109,12 +131,57 @@ public class PackageInfoActivity extends AppCompatActivity {
         carCapacity = findViewById(R.id.packageCarCapacity);
         carStatus = findViewById(R.id.packageCarStatus);
 
+        refreshLayout = findViewById(R.id.swipeToRefresh);
+
+        packScan = true;
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
-        integrator.setCameraId(0);  // Use a specific camera of the device
+        integrator.setCameraId(0);
+        integrator.setPrompt("Zeskanuj kod QR paczki");
         integrator.setBeepEnabled(false);
         integrator.setCaptureActivity(CaptureActivityHorizontal.class);
         integrator.initiateScan();
+
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new AsyncGetPackage("" + pack.getId(), null, null).execute();
+                refreshLayout.setRefreshing(false);
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+        integrator.setCameraId(0);
+        integrator.setBeepEnabled(false);
+        integrator.setCaptureActivity(CaptureActivityHorizontal.class);
+
+        switch (item.getItemId()) {
+            case R.id.changeStatus:
+                return true;
+            case R.id.changeCar:
+                carScan = true;
+                integrator.setPrompt("Zeskanuj kod QR na samochodzie");
+                integrator.initiateScan();
+                return true;
+            case R.id.changeWarehouse:
+                warehouseScan = true;
+                integrator.setPrompt("Zeskanuj kod QR magazynu");
+                integrator.initiateScan();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -122,12 +189,26 @@ public class PackageInfoActivity extends AppCompatActivity {
         if(result != null) {
             if(result.getContents() == null) {
                 Log.d("MainActivity", "Cancelled scan");
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getApplicationContext(), MainMenuActivity.class));
+                Toast.makeText(getApplicationContext(), "Skanowanie zostało anulowane", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("MainActivity", "Scanned");
                 JsonObject jobj = new Gson().fromJson(result.getContents(), JsonObject.class);
 
-                new AsyncGetPackage(this, "" + jobj.get("packId")).execute();
+                if(jobj.get("packId") != null && pack == null && packScan)
+                    new AsyncGetPackage( "" + jobj.get("packId"), null, null).execute();
+                else if(jobj.get("carId") != null && pack != null && carScan)
+                    new AsyncGetPackage(null, "" + jobj.get("carId"), null).execute();
+                else if(jobj.get("warehouseId") != null && pack != null && warehouseScan) {
+                    new AsyncGetPackage(null, null, "" + jobj.get("warehouseId")).execute();
+                }
+                else if( packScan && jobj.get("packId") == null){
+                    startActivity(new Intent(getApplicationContext(), MainMenuActivity.class));
+                    Toast.makeText(getApplicationContext(), "Zeskanuj prawidłowy kod QR!", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(this, "Zeskanuj prawidłowy kod QR!", Toast.LENGTH_SHORT).show();
+                }
             }
         } else {
             // This is important, otherwise the result will not be passed to the fragment
@@ -136,15 +217,14 @@ public class PackageInfoActivity extends AppCompatActivity {
     }
 
     public void getPackage(String packId) {
-        SharedPreferences sharedPref = getSharedPreferences("pref", 0);
-        Call<Pack> call = packageService.getPack(packId, sharedPref.getString("TOKEN", ""));
+        Call<Pack> call = packageService.getPack(packId);
 
         call.enqueue(new Callback<Pack>() {
 
             @Override
             public void onResponse(Call<Pack> call, Response<Pack> response) {
                 if(response.isSuccessful()){        //gdy dane zostały prawidłowo pobrane z serwera ustawiamy odpowiednie pola w aktywności
-                    Pack pack = response.body();
+                    pack = response.body();
                     Toast.makeText(getApplicationContext(), "OPERACJA UDANA", Toast.LENGTH_SHORT).show();
                     packageNumber.setText(pack.getPackageNumber());
                     packageSendDate.setText(pack.getDate().split("T")[0]);
@@ -193,13 +273,97 @@ public class PackageInfoActivity extends AppCompatActivity {
         });
     }
 
-    public class AsyncGetPackage extends AsyncTask<Void, Void, Void> {
-        Activity packageInfoActivity;
-        String packId;
+    public void changeCar(String carId) {
+        Call<Car> call = carService.getCar(carId);
 
-        public AsyncGetPackage(Activity packageInfoActivity, String packId) {
-            this.packageInfoActivity = packageInfoActivity;
+        call.enqueue(new Callback<Car>() {
+
+            @Override
+            public void onResponse(Call<Car> call, Response<Car> response) {
+                if(response.isSuccessful()){
+                    car = response.body();
+                    Log.d("CAR", "" + car);
+                    pack.setCar(car);
+                    Call<Pack> callPack = packageService.updatePack(pack);
+
+                    callPack.enqueue(new Callback<Pack>() {
+                        @Override
+                        public void onResponse(Call<Pack> call, Response<Pack> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Pack> call, Throwable t) {
+
+                        }
+                    });
+
+                }
+                else{
+                    if(response.code() == 401)
+                        Toast.makeText(getApplicationContext(), "Bład autoryzacji", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Car> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Błąd połączenia! Sprawdź połączenie internetowe", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void changeWarehouse(String warehouseId) {
+        Call<Warehouse> call = warehouseService.getWarehouse(warehouseId);
+
+        call.enqueue(new Callback<Warehouse>() {
+            @Override
+            public void onResponse(Call<Warehouse> call, Response<Warehouse> response) {
+                if(response.isSuccessful()){
+                    warehouse = response.body();
+                    List<Warehouse> warehouses = new ArrayList<>();
+                    warehouses.add(warehouse);
+                    pack.setWarehouses(warehouses);
+
+                    Call<Pack> callPack = packageService.updatePack(pack);
+
+                    callPack.enqueue(new Callback<Pack>() {
+                        @Override
+                        public void onResponse(Call<Pack> call, Response<Pack> response) {
+                            if(response.isSuccessful()){
+
+                            }
+                            else if(response.code() == 401)
+                                Toast.makeText(getApplicationContext(), "Bład autoryzacji", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onFailure(Call<Pack> call, Throwable t) {
+
+                        }
+                    });
+                }
+                else if(response.code() == 401)
+                    Toast.makeText(getApplicationContext(), "Bład autoryzacji", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Warehouse> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+
+    public class AsyncGetPackage extends AsyncTask<Void, Void, Void> {
+        String packId;
+        String carId;
+        String warehouseId;
+
+        public AsyncGetPackage(String packId, String carId, String warehouseId) {
             this.packId = packId;
+            this.carId = carId;
+            this.warehouseId = warehouseId;
         }
 
 
@@ -211,12 +375,25 @@ public class PackageInfoActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            getPackage(packId);
+            if(packId != null)
+                getPackage(packId);
+            if(carId != null)
+                changeCar(carId);
+            if(warehouseId != null)
+                changeWarehouse(warehouseId);
+
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            this.packId = null;
+            this.carId = null;
+            this.warehouseId = null;
+
+            warehouseScan = false;
+            carScan = false;
+            packScan = false;
             super.onPostExecute(aVoid);
 
         }

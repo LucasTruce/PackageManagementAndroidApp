@@ -2,7 +2,6 @@ package com.app.packagemanagementandroidapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -14,22 +13,16 @@ import android.widget.TextView;
 
 import com.app.packagemanagementandroidapp.model.Login;
 import com.app.packagemanagementandroidapp.model.authResponse;
+import com.app.packagemanagementandroidapp.service.ServiceGenerator;
 import com.app.packagemanagementandroidapp.service.UserService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    Retrofit.Builder builder = new Retrofit.Builder()
-            .baseUrl("http://192.168.0.2:8080/")
-            .addConverterFactory(GsonConverterFactory.create());
-    Retrofit retrofit = builder.build();
-
-    UserService userService = retrofit.create(UserService.class);
+    UserService userService;
 
     EditText loginInput;
     EditText passwordInput;
@@ -43,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        userService = ServiceGenerator.createService(UserService.class);
+
         progressBar = findViewById(R.id.progressBar);
         loginInput = findViewById(R.id.login);
         passwordInput = findViewById(R.id.password);
@@ -53,11 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void login(){
-        Login login = new Login(loginInput.getText().toString(), passwordInput.getText().toString());
-        Log.d("MA", "Login: " + login.getLogin().toString());
-
-        Call<authResponse> call = userService.authorization(login);
-
+        Call<authResponse> call = userService.authorization(new Login(loginInput.getText().toString(), passwordInput.getText().toString()));
         SharedPreferences sharedPref = getSharedPreferences("pref", 0);
 
         call.enqueue(new Callback<authResponse>() {

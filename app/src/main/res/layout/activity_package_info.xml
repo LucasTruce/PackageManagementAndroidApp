@@ -6,585 +6,591 @@
     android:layout_height="match_parent"
     tools:context=".PackageInfoActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeToRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
-
-                <EditText
-                    android:id="@+id/packageInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginStart="6dp"
-                    android:inputType="none"
-                    android:textSize="20dp"
-                    android:text="Informacje o paczce"
-                    android:enabled="false"/>
-            </LinearLayout>
-
-            <TableLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:stretchColumns="2" >
-
-                <TableRow>
-                    <TextView
-                        android:text="Numer paczki:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageNumberView"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-25dp"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:text="Status paczki:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_column="1" />
-
-                    <TextView
-                        android:id="@+id/packageStatusView"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-25dp"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:text="Data nadania:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageSendDateView"
-                        android:layout_width="wrap_content"
-                        android:layout_column="2"
-                        android:layout_marginStart="-25dp"
-                        android:layout_marginEnd="15dp"
-                        android:textSize="14dp" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:text="WxDxS [cm]:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"
-                        />
-
-                    <TextView
-                        android:id="@+id/packageSize"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginStart="-25dp"
-                        android:layout_marginEnd="15dp"/>
-                </TableRow>
-            </TableLayout>
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
-
-                <EditText
-                    android:id="@+id/packageSenderInfo"
-                    android:layout_width="wrap_content"
+                android:orientation="vertical" >
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="20dp"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginStart="6dp"
-                    android:inputType="none"
-                    android:text="Nadawca"
-                    android:enabled="false"/>
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+
+                    <EditText
+                        android:id="@+id/packageInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginStart="6dp"
+                        android:inputType="none"
+                        android:textSize="20dp"
+                        android:text="Informacje o paczce"
+                        android:enabled="false"/>
+                </LinearLayout>
+
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:stretchColumns="2" >
+
+                    <TableRow>
+                        <TextView
+                            android:text="Numer paczki:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageNumberView"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-25dp"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Status paczki:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_column="1" />
+
+                        <TextView
+                            android:id="@+id/packageStatusView"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-25dp"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Data nadania:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageSendDateView"
+                            android:layout_width="wrap_content"
+                            android:layout_column="2"
+                            android:layout_marginStart="-25dp"
+                            android:layout_marginEnd="15dp"
+                            android:textSize="14dp" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="WxDxS [cm]:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/packageSize"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="-25dp"
+                            android:layout_marginEnd="15dp"/>
+                    </TableRow>
+                </TableLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+
+                    <EditText
+                        android:id="@+id/packageSenderInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="20dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginStart="6dp"
+                        android:inputType="none"
+                        android:text="Nadawca"
+                        android:enabled="false"/>
+                </LinearLayout>
+
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:stretchColumns="2">
+
+                    <TableRow>
+
+                        <TextView
+                            android:text="Imię i nazwisko:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp" />
+
+                        <TextView
+                            android:id="@+id/packageSenderName"
+                            android:layout_width="wrap_content"
+                            android:layout_column="2"
+                            android:layout_marginStart="-35dp"
+                            android:layout_marginEnd="15dp"
+                            android:textSize="14dp"
+                            android:layout_weight="1"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:text="Adres email:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageSenderEmail"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="-35dp"
+                            android:layout_marginEnd="15dp" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Firma:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageSenderCompany"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="-35dp"
+                            android:layout_marginEnd="15dp" />
+                    </TableRow>
+                    <TableRow>
+
+                        <TextView
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"
+                            android:width="150dp"
+                            android:text="Miasto:"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/packageSenderCity"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-35dp"
+                            />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Ulica:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/packageSenderStreet"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="-35dp"
+
+                            android:layout_marginEnd="15dp" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:text="Telefon:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageSenderPhoneNumber"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-35dp"
+                            />
+                    </TableRow>
+                </TableLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+
+                    <EditText
+                        android:id="@+id/packageReceiverInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginStart="6dp"
+                        android:inputType="none"
+                        android:text="Odbiorca"
+                        android:enabled="false"/>
+                </LinearLayout>
+
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:stretchColumns="2">
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"
+                            android:width="150dp"
+                            android:text="Imię i nazwisko:"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/packageReceiverName"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-35dp"
+                            />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:text="Adres email:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageReceiverEmail"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-35dp"
+                            />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Firma:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageReceiverCompany"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-35dp"
+                            />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Miasto:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageReceiverCity"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-35dp"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Ulica:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageReceiverStreet"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-35dp"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:text="Telefon:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageReceiverPhoneNumber"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-35dp"/>
+                    </TableRow>
+                </TableLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+
+                    <EditText
+                        android:id="@+id/packageCarInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginStart="6dp"
+                        android:inputType="none"
+                        android:text="Samochód"
+                        android:enabled="false"/>
+                </LinearLayout>
+
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:stretchColumns="2" >
+
+                    <TableRow>
+                        <TextView
+                            android:text="Marka:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageCarBrand"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:text="Model:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageCarModel"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Nr rejestracyjny:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageCarLicensePlate"
+                            android:layout_width="wrap_content"
+                            android:layout_column="2"
+                            android:layout_marginStart="-15dp"
+                            android:layout_marginEnd="15dp"
+                            android:textSize="14dp" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Ładowność:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageCarCapacity"
+                            android:layout_width="wrap_content"
+                            android:layout_column="2"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp"
+                            android:textSize="14dp" />
+                    </TableRow>
+
+
+                    <TableRow
+                        android:gravity="center">
+                        <TextView
+                            android:text="Status samochodu:"
+                            android:textSize="14dp"
+                            android:layout_width="wrap_content"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageCarStatus"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp" />
+                    </TableRow>
+                </TableLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+
+                    <EditText
+                        android:id="@+id/packageWarehouseInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginStart="6dp"
+                        android:inputType="none"
+                        android:text="Magazyn"
+                        android:enabled="false"/>
+                </LinearLayout>
+
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:stretchColumns="2">
+
+                    <TableRow>
+                        <TextView
+                            android:text="Telefon:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageWarehousePhoneNumber"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="25dp"
+                            android:layout_marginStart="-25dp"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Miasto:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageWarehouseCity"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-25dp"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:text="Kod pocztowy:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageWarehousePostalCode"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-25dp"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Ulica:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageWarehouseStreet"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-25dp"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Opis:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/packageWarehouseDescription"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-25dp"/>
+                    </TableRow>
+                </TableLayout>
+
             </LinearLayout>
 
-            <TableLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:stretchColumns="2">
-
-                <TableRow>
-
-                    <TextView
-                        android:text="Imię i nazwisko:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp" />
-
-                    <TextView
-                        android:id="@+id/packageSenderName"
-                        android:layout_width="wrap_content"
-                        android:layout_column="2"
-                        android:layout_marginStart="-35dp"
-                        android:layout_marginEnd="15dp"
-                        android:textSize="14dp" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:text="Adres email:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageSenderEmail"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginStart="-35dp"
-                        android:layout_marginEnd="15dp" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:text="Firma:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageSenderCompany"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginStart="-35dp"
-                        android:layout_marginEnd="15dp" />
-                </TableRow>
-                <TableRow>
-
-                    <TextView
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"
-                        android:width="150dp"
-                        android:text="Miasto:"
-                        android:textSize="14dp" />
-
-                    <TextView
-                        android:id="@+id/packageSenderCity"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-35dp"
-                        />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:text="Ulica:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"
-                        />
-
-                    <TextView
-                        android:id="@+id/packageSenderStreet"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginStart="-35dp"
-
-                        android:layout_marginEnd="15dp" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:text="Telefon:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageSenderPhoneNumber"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-35dp"
-                        />
-                </TableRow>
-            </TableLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
-
-                <EditText
-                    android:id="@+id/packageReceiverInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginStart="6dp"
-                    android:inputType="none"
-                    android:text="Odbiorca"
-                    android:enabled="false"/>
-            </LinearLayout>
-
-            <TableLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:stretchColumns="2">
-
-                <TableRow>
-
-                    <TextView
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"
-                        android:width="150dp"
-                        android:text="Imię i nazwisko:"
-                        android:textSize="14dp" />
-
-                    <TextView
-                        android:id="@+id/packageReceiverName"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-35dp"
-                        />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:text="Adres email:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageReceiverEmail"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-35dp"
-                        />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:text="Firma:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageReceiverCompany"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-35dp"
-                        />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:text="Miasto:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageReceiverCity"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-35dp"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:text="Ulica:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageReceiverStreet"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-35dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:text="Telefon:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageReceiverPhoneNumber"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-35dp"/>
-                </TableRow>
-            </TableLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
-
-                <EditText
-                    android:id="@+id/packageCarInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginStart="6dp"
-                    android:inputType="none"
-                    android:text="Samochód"
-                    android:enabled="false"/>
-            </LinearLayout>
-
-            <TableLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:stretchColumns="2" >
-
-                <TableRow>
-                    <TextView
-                        android:text="Marka:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageCarBrand"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-15dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:text="Model:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageCarModel"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-15dp" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:text="Nr rejestracyjny:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageCarLicensePlate"
-                        android:layout_width="wrap_content"
-                        android:layout_column="2"
-                        android:layout_marginStart="-15dp"
-                        android:layout_marginEnd="15dp"
-                        android:textSize="14dp" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:text="Ładowność:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageCarCapacity"
-                        android:layout_width="wrap_content"
-                        android:layout_column="2"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-15dp"
-                        android:textSize="14dp" />
-                </TableRow>
-
-
-                <TableRow
-                    android:gravity="center">
-                    <TextView
-                        android:text="Status samochodu:"
-                        android:textSize="14dp"
-                        android:layout_width="wrap_content"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageCarStatus"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-15dp" />
-                </TableRow>
-            </TableLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
-
-                <EditText
-                    android:id="@+id/packageWarehouseInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginStart="6dp"
-                    android:inputType="none"
-                    android:text="Magazyn"
-                    android:enabled="false"/>
-            </LinearLayout>
-
-            <TableLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:stretchColumns="2">
-
-                <TableRow>
-                    <TextView
-                        android:text="Telefon:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageWarehousePhoneNumber"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="25dp"
-                        android:layout_marginStart="-25dp"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:text="Miasto:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageWarehouseCity"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-25dp"/>
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:text="Kod pocztowy:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageWarehousePostalCode"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-25dp"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:text="Ulica:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageWarehouseStreet"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-25dp"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:text="Opis:"
-                        android:textSize="14dp"
-                        android:width="150dp"
-                        android:layout_column="1"
-                        android:layout_marginStart="15dp"/>
-
-                    <TextView
-                        android:id="@+id/packageWarehouseDescription"
-                        android:textSize="14dp"
-                        android:layout_column="2"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="-25dp"/>
-                </TableRow>
-            </TableLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

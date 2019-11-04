@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class CarStatus {
 
-    private long id;
+    private Long id;
     private String name;
     private String description;
 }

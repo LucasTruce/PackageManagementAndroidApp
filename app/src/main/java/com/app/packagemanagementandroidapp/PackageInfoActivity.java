@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 
 import android.view.Menu;
@@ -17,6 +16,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.app.packagemanagementandroidapp.dialog.PackageStatusDialog;
 import com.app.packagemanagementandroidapp.model.Car;
 import com.app.packagemanagementandroidapp.model.Pack;
 
@@ -37,8 +37,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PackageInfoActivity extends AppCompatActivity {
 
@@ -168,6 +166,7 @@ public class PackageInfoActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.changeStatus:
+                openDialog();
                 return true;
             case R.id.changeCar:
                 carScan = true;
@@ -351,6 +350,11 @@ public class PackageInfoActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void openDialog() {
+        PackageStatusDialog packageStatusDialog = new PackageStatusDialog(pack);
+        packageStatusDialog.show(getSupportFragmentManager(), "StatusDialog");
     }
 
 

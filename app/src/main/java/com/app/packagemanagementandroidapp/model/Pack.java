@@ -1,6 +1,5 @@
 package com.app.packagemanagementandroidapp.model;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import lombok.Getter;
@@ -23,5 +22,8 @@ public class Pack {
     private Sender sender;
     private List<Warehouse> warehouses;
     private Car car;
+
+    private Content content;
+    private Code code;
 
 }

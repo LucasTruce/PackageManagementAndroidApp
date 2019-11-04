@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <RadioGroup
+        android:id="@+id/statusRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp">
+
+        <RadioButton
+            android:id="@+id/inDelivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="W dostawie" />
+
+        <RadioButton
+            android:id="@+id/inWarehouse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="W magazynie" />
+
+        <RadioButton
+            android:id="@+id/waitingForCourier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="W oczekiwaniu na kuriera" />
+
+        <RadioButton
+            android:id="@+id/wayToWarehouse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="W drodze do magazynu" />
+
+        <RadioButton
+            android:id="@+id/packageDelivered"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dostarczono" />
+    </RadioGroup>
+</RelativeLayout>

@@ -15,7 +15,7 @@ public class MainMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         ActionBar bar = getSupportActionBar();
-        bar.setTitle("Menu");
+        bar.setTitle("Menu główne");
     }
 
     public void packageScan(View view){

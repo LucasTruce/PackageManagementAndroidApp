@@ -226,9 +226,11 @@ public class PackageInfoActivity extends AppCompatActivity {
                     pack = response.body();
                     Toast.makeText(getApplicationContext(), "OPERACJA UDANA", Toast.LENGTH_SHORT).show();
                     packageNumber.setText(pack.getPackageNumber());
-                    packageSendDate.setText(pack.getDate().split("T")[0]);
-                    packageSize.setText(pack.getHeight() + "x" + pack.getLength() + "x" + pack.getWidth());
 
+                    if(pack.getDate() != null)
+                        packageSendDate.setText(pack.getDate().split("T")[0]);
+
+                    packageSize.setText(pack.getHeight() + "x" + pack.getLength() + "x" + pack.getWidth());
                     packageStatus.setText(pack.getPackageStatus().getName());
 
                     senderName.setText(pack.getSender().getName() + " " + pack.getSender().getLastName());
@@ -238,24 +240,29 @@ public class PackageInfoActivity extends AppCompatActivity {
                     senderStreet.setText(pack.getSender().getPostCode() + ", " + pack.getSender().getStreet());
                     senderPhoneNumber.setText(pack.getSender().getPhoneNumber());
 
-                    receiverName.setText(pack.getRecipient().getName() + " " + pack.getSender().getLastName());
+                    receiverName.setText(pack.getRecipient().getName() + " " + pack.getRecipient().getLastName());
                     receiverEmail.setText(pack.getRecipient().getEmail());
                     receiverCompany.setText(pack.getRecipient().getCompanyName());
                     receiverCity.setText(pack.getRecipient().getCity());
-                    receiverStreet.setText(pack.getRecipient().getPostCode() + "," + pack.getSender().getStreet());
+                    receiverStreet.setText(pack.getRecipient().getPostCode() + ", " + pack.getSender().getStreet());
                     receiverPhoneNumber.setText(pack.getRecipient().getPhoneNumber());
 
-                    carBrand.setText(pack.getCar().getBrand());
-                    carModel.setText(pack.getCar().getModel());
-                    carCapacity.setText(Double.toString(pack.getCar().getCapacity()));
-                    carLicensePlate.setText(pack.getCar().getLicensePlate());
-                    carStatus.setText(pack.getCar().getCarStatus().getName());
 
-                    warehouseCity.setText(pack.getWarehouses().get(0).getCity());
-                    warehousePhoneNumber.setText(pack.getWarehouses().get(0).getPhoneNumber());
-                    warehousePostCode.setText(pack.getWarehouses().get(0).getPostCode());
-                    warehouseStreet.setText(pack.getWarehouses().get(0).getStreet());
-                    warehouseDescription.setText(pack.getWarehouses().get(0).getDescription());
+                    if(pack.getCar() != null){
+                        carBrand.setText(pack.getCar().getBrand());
+                        carModel.setText(pack.getCar().getModel());
+                        carCapacity.setText(Double.toString(pack.getCar().getCapacity()));
+                        carLicensePlate.setText(pack.getCar().getLicensePlate());
+                        carStatus.setText(pack.getCar().getCarStatus().getName());
+                    }
+
+                    if(!pack.getWarehouses().isEmpty()) {
+                        warehouseCity.setText(pack.getWarehouses().get(0).getCity());
+                        warehousePhoneNumber.setText(pack.getWarehouses().get(0).getPhoneNumber());
+                        warehousePostCode.setText(pack.getWarehouses().get(0).getPostCode());
+                        warehouseStreet.setText(pack.getWarehouses().get(0).getStreet());
+                        warehouseDescription.setText(pack.getWarehouses().get(0).getDescription());
+                    }
                 }
                 else{
                     if(response.code() == 401)
@@ -273,83 +280,45 @@ public class PackageInfoActivity extends AppCompatActivity {
     }
 
     public void changeCar(String carId) {
-        Call<Car> call = carService.getCar(carId);
+        pack.getCar().setId(Long.valueOf(carId));
+        Call<Pack> callPack = packageService.updatePack(pack);
 
-        call.enqueue(new Callback<Car>() {
-
+        callPack.enqueue(new Callback<Pack>() {
             @Override
-            public void onResponse(Call<Car> call, Response<Car> response) {
-                if(response.isSuccessful()){
-                    car = response.body();
-                    Log.d("CAR", "" + car);
-                    pack.setCar(car);
-                    Call<Pack> callPack = packageService.updatePack(pack);
-
-                    callPack.enqueue(new Callback<Pack>() {
-                        @Override
-                        public void onResponse(Call<Pack> call, Response<Pack> response) {
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<Pack> call, Throwable t) {
-
-                        }
-                    });
-
-                }
-                else{
-                    if(response.code() == 401)
-                        Toast.makeText(getApplicationContext(), "Bład autoryzacji", Toast.LENGTH_SHORT).show();
-                }
+            public void onResponse(Call<Pack> call, Response<Pack> response) {
+                pack = response.body();
             }
 
             @Override
-            public void onFailure(Call<Car> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Błąd połączenia! Sprawdź połączenie internetowe", Toast.LENGTH_LONG).show();
+            public void onFailure(Call<Pack> call, Throwable t) {
+
             }
         });
     }
 
     public void changeWarehouse(String warehouseId) {
-        Call<Warehouse> call = warehouseService.getWarehouse(warehouseId);
+        List<Warehouse> warehouses = new ArrayList<>();
+        warehouses.add(new Warehouse(Long.valueOf(warehouseId)));
+        pack.setWarehouses(warehouses);
 
-        call.enqueue(new Callback<Warehouse>() {
+        Call<Pack> callPack = packageService.updatePack(pack);
+
+        callPack.enqueue(new Callback<Pack>() {
             @Override
-            public void onResponse(Call<Warehouse> call, Response<Warehouse> response) {
+            public void onResponse(Call<Pack> call, Response<Pack> response) {
                 if(response.isSuccessful()){
-                    warehouse = response.body();
-                    List<Warehouse> warehouses = new ArrayList<>();
-                    warehouses.add(warehouse);
-                    pack.setWarehouses(warehouses);
-
-                    Call<Pack> callPack = packageService.updatePack(pack);
-
-                    callPack.enqueue(new Callback<Pack>() {
-                        @Override
-                        public void onResponse(Call<Pack> call, Response<Pack> response) {
-                            if(response.isSuccessful()){
-
-                            }
-                            else if(response.code() == 401)
-                                Toast.makeText(getApplicationContext(), "Bład autoryzacji", Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void onFailure(Call<Pack> call, Throwable t) {
-
-                        }
-                    });
+                    pack = response.body();
                 }
                 else if(response.code() == 401)
                     Toast.makeText(getApplicationContext(), "Bład autoryzacji", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<Warehouse> call, Throwable t) {
+            public void onFailure(Call<Pack> call, Throwable t) {
 
             }
         });
+
     }
 
     public void openDialog() {

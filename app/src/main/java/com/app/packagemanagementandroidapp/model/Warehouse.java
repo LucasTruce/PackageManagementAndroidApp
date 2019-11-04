@@ -12,4 +12,8 @@ public class Warehouse {
     private String postCode;
     private String description;
     private Long id;
+
+    public Warehouse(Long id){
+        this.id = id;
+    }
 }

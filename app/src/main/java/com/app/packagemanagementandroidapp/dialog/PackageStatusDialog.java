@@ -80,23 +80,15 @@ public class PackageStatusDialog extends AppCompatDialogFragment {
                         switch (radioButton.getText().toString()){
                             case "W dostawie":
                                 pack.getPackageStatus().setId(1L);
-                                pack.getPackageStatus().setDescription("");
-                                pack.getPackageStatus().setName("");
                                 break;
                             case "W magazynie":
                                 pack.getPackageStatus().setId(2L);
-                                pack.getPackageStatus().setDescription("");
-                                pack.getPackageStatus().setName("");
                                 break;
                             case "W oczekiwaniu na kuriera":
                                 pack.getPackageStatus().setId(3L);
-                                pack.getPackageStatus().setDescription("");
-                                pack.getPackageStatus().setName("");
                                 break;
                             case "W drodze do magazynu":
                                 pack.getPackageStatus().setId(4L);
-                                pack.getPackageStatus().setDescription("");
-                                pack.getPackageStatus().setName("");
                                 break;
                             case "Dostarczono":
                                 pack.getPackageStatus().setId(5L);
@@ -123,7 +115,7 @@ public class PackageStatusDialog extends AppCompatDialogFragment {
 
                             @Override
                             public void onFailure(Call<Pack> call, Throwable t) {
-                                Toast.makeText(getContext().getApplicationContext(), "Błąd połączenia! Sprawdź połączenie internetowe", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), "Błąd połączenia! Sprawdź połączenie internetowe", Toast.LENGTH_LONG).show();
                             }
                         });
                     }

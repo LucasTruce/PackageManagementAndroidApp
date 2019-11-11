@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductInfoActivity">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeToRefreshProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+
+                    <EditText
+                        android:id="@+id/productInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginStart="6dp"
+                        android:inputType="none"
+                        android:textSize="20dp"
+                        android:text="Informacje o produkcie"
+                        android:enabled="false"/>
+                </LinearLayout>
+
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:stretchColumns="2" >
+
+                    <TableRow>
+                        <TextView
+                            android:text="Nazwa:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/productName"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:text="Waga[kg]:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/productWeight"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Kategoria:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/productCategory"
+                            android:layout_width="wrap_content"
+                            android:layout_column="2"
+                            android:layout_marginStart="-15dp"
+                            android:layout_marginEnd="15dp"
+                            android:textSize="14dp" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Czas kompletacji:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/productPickingTime"
+                            android:layout_width="wrap_content"
+                            android:layout_column="2"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp"
+                            android:textSize="14dp" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:text="Numer paczki:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/productPackageNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_column="2"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp"
+                            android:textSize="14dp" />
+                    </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</RelativeLayout>

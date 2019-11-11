@@ -26,4 +26,12 @@ public class MainMenuActivity extends AppCompatActivity {
     public void scanCar(View view) {
         startActivity(new Intent(getApplicationContext(), CarInfoActivity.class));
     }
+
+    public void productScan(View view) {
+        startActivity(new Intent(getApplicationContext(), ProductInfoActivity.class));
+    }
+
+    public void warehouseScan(View view) {
+        startActivity(new Intent(getApplicationContext(), WarehouseInfoActivity.class));
+    }
 }

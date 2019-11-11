@@ -41,6 +41,7 @@ public class CarInfoActivity extends AppCompatActivity {
     TextView carType;
     TextView carEngineType;
     TextView carLicensePlate;
+    TextView carLoad;
 
     SwipeRefreshLayout refreshLayout;
 
@@ -60,12 +61,13 @@ public class CarInfoActivity extends AppCompatActivity {
         carBrand = findViewById(R.id.carBrand);
         carModel = findViewById(R.id.carModel);
         carPower = findViewById(R.id.carPower);
-        carCapacity = findViewById(R.id.carCapacity);
+        carLoad = findViewById(R.id.carLoad);
         carColor = findViewById(R.id.carColor);
         carStatus = findViewById(R.id.carStatus);
         carType = findViewById(R.id.carType);
         carEngineType = findViewById(R.id.carEngineType);
         carLicensePlate = findViewById(R.id.carLicensePlate);
+        carCapacity = findViewById(R.id.carEngineCapacity);
 
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
@@ -147,7 +149,7 @@ public class CarInfoActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     car = response.body();
                     carBrand.setText(car.getBrand());
-                    carCapacity.setText(String.valueOf(car.getCapacity()));
+                    carLoad.setText(String.valueOf(car.getLoad()));
                     carModel.setText(car.getModel());
                     carColor.setText(car.getColor());
                     carLicensePlate.setText(car.getLicensePlate());
@@ -155,6 +157,7 @@ public class CarInfoActivity extends AppCompatActivity {
                     carPower.setText(String.valueOf(car.getPower()));
                     carType.setText(car.getType());
                     carStatus.setText(car.getCarStatus().getName());
+                    carCapacity.setText(String.valueOf(car.getCapacity()));
 
                 }
                 else if(response.code() == 401){

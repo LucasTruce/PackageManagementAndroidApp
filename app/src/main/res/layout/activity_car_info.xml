@@ -101,7 +101,7 @@
                             android:layout_marginStart="15dp"/>
 
                         <TextView
-                            android:id="@+id/carCapacity"
+                            android:id="@+id/carLoad"
                             android:layout_width="wrap_content"
                             android:layout_column="2"
                             android:layout_marginEnd="15dp"
@@ -160,6 +160,25 @@
 
                         <TextView
                             android:id="@+id/carEngineType"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center">
+                        <TextView
+                            android:text="Pojemność silnika:"
+                            android:textSize="14dp"
+                            android:layout_width="wrap_content"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/carEngineCapacity"
                             android:textSize="14dp"
                             android:layout_column="2"
                             android:layout_width="wrap_content"

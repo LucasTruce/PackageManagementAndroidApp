@@ -289,7 +289,7 @@ public class PackageInfoActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Pack> call, Throwable t) {
-
+                Toast.makeText(getApplicationContext(), "Błąd połączenia! Sprawdź połączenie internetowe", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -313,7 +313,7 @@ public class PackageInfoActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Pack> call, Throwable t) {
-
+                Toast.makeText(getApplicationContext(), "Błąd połączenia! Sprawdź połączenie internetowe", Toast.LENGTH_LONG).show();
             }
         });
 

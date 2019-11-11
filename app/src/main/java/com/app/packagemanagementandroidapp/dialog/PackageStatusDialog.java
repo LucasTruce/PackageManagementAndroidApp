@@ -25,16 +25,23 @@ import retrofit2.Response;
 
 public class PackageStatusDialog extends AppCompatDialogFragment {
 
-    Pack pack;
+    private Pack pack;
 
-    RadioGroup radioGroup;
-    RadioButton radioButton;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
 
-    PackageService packageService;
+    RadioButton inDelivery;
+    RadioButton inWarehouse;
+    RadioButton waitingForCourier;
+    RadioButton wayToWarehouse;
+    RadioButton packageDelivered;
+
+    private PackageService packageService;
 
     public PackageStatusDialog(Pack pack) {
         this.pack = pack;
     }
+
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -42,25 +49,47 @@ public class PackageStatusDialog extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_package_status, null);
 
-
+        view.findViewById(R.id.inWarehouse);
         radioGroup = view.findViewById(R.id.statusRadioGroup);
         Log.d("packId:", "" + pack.getPackageStatus().getId());
+
+        inWarehouse = view.findViewById(R.id.inWarehouse);
+        inDelivery = view.findViewById(R.id.inDelivery);
+        waitingForCourier = view.findViewById(R.id.waitingForCourier);
+        wayToWarehouse = view.findViewById(R.id.wayToWarehouse);
+        packageDelivered = view.findViewById(R.id.packageDelivered);
 
         switch (pack.getPackageStatus().getId().intValue()){
             case 1:
                 radioGroup.check(R.id.inDelivery);
+                inWarehouse.setEnabled(false);
+                waitingForCourier.setEnabled(false);
+                wayToWarehouse.setEnabled(false);
                 break;
             case 2:
                 radioGroup.check(R.id.inWarehouse);
+                waitingForCourier.setEnabled(false);
+                packageDelivered.setEnabled(false);
+                wayToWarehouse.setEnabled(false);
                 break;
             case 3:
                 radioGroup.check(R.id.waitingForCourier);
+                inDelivery.setEnabled(false);
+                inWarehouse.setEnabled(false);
+                packageDelivered.setEnabled(false);
                 break;
             case 4:
                 radioGroup.check(R.id.wayToWarehouse);
+                inDelivery.setEnabled(false);
+                packageDelivered.setEnabled(false);
+                waitingForCourier.setEnabled(false);
                 break;
             case 5:
                 radioGroup.check(R.id.packageDelivered);
+                inWarehouse.setEnabled(false);
+                inDelivery.setEnabled(false);
+                waitingForCourier.setEnabled(false);
+                wayToWarehouse.setEnabled(false);
                 break;
         }
 
@@ -108,7 +137,7 @@ public class PackageStatusDialog extends AppCompatDialogFragment {
 
                                 }
                                 else if(response.code() == 401)
-                                        Toast.makeText(getContext().getApplicationContext(), "Bład autoryzacji", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getDialog().getContext().getApplicationContext(), "Bład autoryzacji", Toast.LENGTH_SHORT).show();
 
 
                             }

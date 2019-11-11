@@ -19,9 +19,11 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void packageScan(View view){
-        Intent intent = new Intent(getApplicationContext(), PackageInfoActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(getApplicationContext(), PackageInfoActivity.class));
 
     }
 
+    public void scanCar(View view) {
+        startActivity(new Intent(getApplicationContext(), CarInfoActivity.class));
+    }
 }

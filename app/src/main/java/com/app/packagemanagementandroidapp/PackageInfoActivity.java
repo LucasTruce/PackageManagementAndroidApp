@@ -76,8 +76,6 @@ public class PackageInfoActivity extends AppCompatActivity {
     TextView carStatus;
 
     Pack pack;
-    Car car;
-    Warehouse warehouse;
 
     boolean carScan = false;
     boolean warehouseScan = false;
@@ -152,7 +150,7 @@ public class PackageInfoActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+        inflater.inflate(R.menu.package_info_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

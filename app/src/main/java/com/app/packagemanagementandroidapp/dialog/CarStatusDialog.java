@@ -15,53 +15,45 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.app.packagemanagementandroidapp.R;
-import com.app.packagemanagementandroidapp.model.Pack;
-import com.app.packagemanagementandroidapp.service.PackageService;
+import com.app.packagemanagementandroidapp.model.Car;
+import com.app.packagemanagementandroidapp.service.CarService;
 import com.app.packagemanagementandroidapp.service.ServiceGenerator;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PackageStatusDialog extends AppCompatDialogFragment {
+public class CarStatusDialog extends AppCompatDialogFragment {
 
-    Pack pack;
+    Car car;
+    CarService carService;
 
     RadioGroup radioGroup;
     RadioButton radioButton;
 
-    PackageService packageService;
 
-    public PackageStatusDialog(Pack pack) {
-        this.pack = pack;
+    public CarStatusDialog(Car car) {
+        this.car = car;
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_package_status, null);
+        View view = inflater.inflate(R.layout.dialog_car_status, null);
 
 
-        radioGroup = view.findViewById(R.id.statusRadioGroup);
-        Log.d("packId:", "" + pack.getPackageStatus().getId());
+        radioGroup = view.findViewById(R.id.statusCarRadioGroup);
+        Log.d("carId:", "" + car.getCarStatus().getId());
 
-        switch (pack.getPackageStatus().getId().intValue()){
+        switch (car.getCarStatus().getId().intValue()){
             case 1:
-                radioGroup.check(R.id.inDelivery);
+                radioGroup.check(R.id.inTheField);
                 break;
             case 2:
-                radioGroup.check(R.id.inWarehouse);
+                radioGroup.check(R.id.isFree);
                 break;
-            case 3:
-                radioGroup.check(R.id.waitingForCourier);
-                break;
-            case 4:
-                radioGroup.check(R.id.wayToWarehouse);
-                break;
-            case 5:
-                radioGroup.check(R.id.packageDelivered);
-                break;
+
         }
 
         builder.setView(view)
@@ -77,45 +69,35 @@ public class PackageStatusDialog extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         int id = radioGroup.getCheckedRadioButtonId();
                         radioButton = view.findViewById(id);
+
                         switch (radioButton.getText().toString()){
-                            case "W dostawie":
-                                pack.getPackageStatus().setId(1L);
+                            case "W terenie":
+                                car.getCarStatus().setId(1L);
                                 break;
-                            case "W magazynie":
-                                pack.getPackageStatus().setId(2L);
-                                break;
-                            case "W oczekiwaniu na kuriera":
-                                pack.getPackageStatus().setId(3L);
-                                break;
-                            case "W drodze do magazynu":
-                                pack.getPackageStatus().setId(4L);
-                                break;
-                            case "Dostarczono":
-                                pack.getPackageStatus().setId(5L);
+                            case "Wolny":
+                                car.getCarStatus().setId(2L);
                                 break;
                         }
 
-
                         SharedPreferences sharedPref = getContext().getSharedPreferences("pref", 0);
-                        packageService = ServiceGenerator.createService(PackageService.class, sharedPref.getString("TOKEN", ""));
-                        Log.d("PACKAGE", "" + pack.getPackageStatus().getId() + pack.getPackageStatus().getName());
-                        Call<Pack> call = packageService.updatePack(pack);
+                        carService = ServiceGenerator.createService(CarService.class, sharedPref.getString("TOKEN", ""));
 
-                        call.enqueue(new Callback<Pack>() {
+                        Call<Car> call = carService.updateCar(car);
+
+                        call.enqueue(new Callback<Car>() {
                             @Override
-                            public void onResponse(Call<Pack> call, Response<Pack> response) {
+                            public void onResponse(Call<Car> call, Response<Car> response) {
                                 if(response.isSuccessful()){
 
                                 }
                                 else if(response.code() == 401)
-                                        Toast.makeText(getContext().getApplicationContext(), "Bład autoryzacji", Toast.LENGTH_SHORT).show();
-
-
+                                    Toast.makeText(getContext().getApplicationContext(), "Bład autoryzacji", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
-                            public void onFailure(Call<Pack> call, Throwable t) {
+                            public void onFailure(Call<Car> call, Throwable t) {
                                 Toast.makeText(getContext(), "Błąd połączenia! Sprawdź połączenie internetowe", Toast.LENGTH_LONG).show();
+
                             }
                         });
                     }

@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.packagemanagementandroidapp">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,28 +11,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity
             android:name=".MainMenuActivity"
-            android:label="@string/app_name" >
-        </activity>
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".PackageInfoActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".MainMenuActivity">
-        </activity>
+            android:parentActivityName=".MainMenuActivity"></activity>
         <activity
             android:name=".CaptureActivityHorizontal"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name"></activity>
+        <activity
+            android:name=".CarInfoActivity"
+            android:parentActivityName=".MainMenuActivity"
+            android:label="Informacje o samochodzie"></activity>
     </application>
-
-
 
 </manifest>

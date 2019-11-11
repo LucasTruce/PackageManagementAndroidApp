@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
     TextView errorLabel;
     ProgressBar progressBar;
 
-    private static String token;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,12 +54,11 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<authResponse> call, Response<authResponse> response) {
                 if(response.isSuccessful()){
                     Intent intent = new Intent(getApplicationContext(), MainMenuActivity.class);
-                    intent.putExtra("TOKEN", response.body().getJwttoken());
+                    //jeśli użytkownik ma przypisaną rolę WORKER
 
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString("TOKEN", "Bearer " + response.body().getJwttoken());
                     editor.commit();
-
                     startActivity(intent);
                 }
                 else{

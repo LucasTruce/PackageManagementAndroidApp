@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PackageInfoActivity">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeToRefreshCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+
+                    <EditText
+                        android:id="@+id/carInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginStart="6dp"
+                        android:inputType="none"
+                        android:textSize="20dp"
+                        android:text="Informacje o samochodzie"
+                        android:enabled="false"/>
+                </LinearLayout>
+
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:stretchColumns="2" >
+
+                    <TableRow>
+                        <TextView
+                            android:text="Marka:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/carBrand"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:text="Model:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/carModel"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Nr rejestracyjny:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/carLicensePlate"
+                            android:layout_width="wrap_content"
+                            android:layout_column="2"
+                            android:layout_marginStart="-15dp"
+                            android:layout_marginEnd="15dp"
+                            android:textSize="14dp" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="Ładowność:"
+                            android:textSize="14dp"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/carCapacity"
+                            android:layout_width="wrap_content"
+                            android:layout_column="2"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp"
+                            android:textSize="14dp" />
+                    </TableRow>
+
+
+                    <TableRow
+                        android:gravity="center">
+                        <TextView
+                            android:text="Status samochodu:"
+                            android:textSize="14dp"
+                            android:layout_width="wrap_content"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/carStatus"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center">
+                        <TextView
+                            android:text="Kolor:"
+                            android:textSize="14dp"
+                            android:layout_width="wrap_content"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/carColor"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center">
+                        <TextView
+                            android:text="Typ silnika:"
+                            android:textSize="14dp"
+                            android:layout_width="wrap_content"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/carEngineType"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center">
+                        <TextView
+                            android:text="Moc[KM]:"
+                            android:textSize="14dp"
+                            android:layout_width="wrap_content"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/carPower"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center">
+                        <TextView
+                            android:text="Rodzaj:"
+                            android:textSize="14dp"
+                            android:layout_width="wrap_content"
+                            android:width="150dp"
+                            android:layout_column="1"
+                            android:layout_marginStart="15dp"/>
+
+                        <TextView
+                            android:id="@+id/carType"
+                            android:textSize="14dp"
+                            android:layout_column="2"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="-15dp" />
+                    </TableRow>
+                </TableLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

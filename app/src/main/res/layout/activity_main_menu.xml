@@ -25,16 +25,17 @@
                 android:id="@+id/scanPackage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="50dp"
+                android:layout_marginRight="40dp"
                 android:gravity="center"
                 android:text="Skanuj Paczkę"
                 android:onClick="packageScan"/>
 
             <Button
-                android:text="Button 2"
+                android:text="Skanuj samochód"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:onClick="scanCar"/>
         </LinearLayout>
 
     </LinearLayout>

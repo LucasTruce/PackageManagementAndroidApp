@@ -278,6 +278,8 @@ public class PackageInfoActivity extends AppCompatActivity {
     }
 
     public void changeCar(String carId) {
+        if(pack.getCar() == null)
+            pack.setCar(new Car());
         pack.getCar().setId(Long.valueOf(carId));
         Call<Pack> callPack = packageService.updatePack(pack);
 

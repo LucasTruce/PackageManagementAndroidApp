@@ -40,7 +40,11 @@
         <activity
             android:name=".WarehouseInfoActivity"
             android:label="Informacje o magazynie"
-            android:parentActivityName=".MainMenuActivity"/>
+            android:parentActivityName=".MainMenuActivity" />
+        <activity
+            android:name=".PaginationPackageActivity"
+            android:label="Paczki do odebrania"
+            android:parentActivityName=".MainMenuActivity" />
     </application>
 
 </manifest>

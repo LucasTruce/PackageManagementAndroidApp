@@ -6,15 +6,27 @@
     android:layout_height="match_parent"
     android:gravity="center"
     tools:context=".MainMenuActivity"
+    android:background="#444444"
     >
 
+
     <LinearLayout
+        android:id="@+id/linear"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp">
+
+        <Button
+            android:id="@+id/findForDelivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="150dp"
+            android:background="@drawable/btn"
+            android:onClick="findPackagesForDelivery"
+            android:text="Znajdź paczki do odbioru" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -25,19 +37,21 @@
 
             <Button
                 android:id="@+id/scanPackage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="125dp"
+                android:layout_height="75dp"
                 android:layout_marginRight="40dp"
+                android:background="@drawable/btn"
                 android:gravity="center"
-                android:text="Skanuj Paczkę"
-                android:onClick="packageScan"/>
+                android:onClick="packageScan"
+                android:text="Skanuj Paczkę" />
 
             <Button
-                android:text="Skanuj samochód"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="125dp"
+                android:layout_height="75dp"
+                android:background="@drawable/btn"
                 android:gravity="center"
-                android:onClick="scanCar"/>
+                android:onClick="scanCar"
+                android:text="Skanuj samochód" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -49,20 +63,23 @@
 
             <Button
                 android:id="@+id/scanProduct"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="125dp"
+                android:layout_height="75dp"
                 android:layout_marginRight="40dp"
+
+                android:background="@drawable/btn"
                 android:gravity="center"
-                android:text="Skanuj Produkt"
-                android:onClick="productScan"/>
+                android:onClick="productScan"
+                android:text="Skanuj Produkt" />
 
             <Button
                 android:id="@+id/scanWarehouse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="125dp"
+                android:layout_height="75dp"
+                android:background="@drawable/btn"
                 android:gravity="center"
-                android:text="Skanuj magazyn"
-                android:onClick="warehouseScan"/>
+                android:onClick="warehouseScan"
+                android:text="Skanuj magazyn"/>
         </LinearLayout>
 
     </LinearLayout>

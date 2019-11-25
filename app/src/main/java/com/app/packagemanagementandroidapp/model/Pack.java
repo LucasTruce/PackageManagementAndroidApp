@@ -1,5 +1,8 @@
 package com.app.packagemanagementandroidapp.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 import lombok.Getter;
@@ -16,6 +19,7 @@ public class Pack {
     private int length;
     private int height;
     private int width;
+    private float weight;
 
     private PackageStatus packageStatus;
     private Recipient recipient;
@@ -25,5 +29,6 @@ public class Pack {
 
     private Content content;
     private Code code;
+
 
 }

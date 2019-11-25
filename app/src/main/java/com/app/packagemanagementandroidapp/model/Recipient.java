@@ -14,5 +14,7 @@ public class Recipient {
     private String postCode;
     private String phoneNumber;
     private String email;
+    private String houseNumber;
+    private String apartmentNumber;
     private Long id;
 }

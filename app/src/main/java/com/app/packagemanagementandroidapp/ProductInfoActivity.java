@@ -23,6 +23,9 @@ import com.google.zxing.integration.android.IntentResult;
 
 import org.w3c.dom.Text;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -87,7 +90,7 @@ public class ProductInfoActivity extends AppCompatActivity {
                 JsonObject jobj = new Gson().fromJson(result.getContents(), JsonObject.class);
 
                 if(jobj.get("productId") != null) {
-                    new AsyncGetProduct(jobj.get("productId").toString(), jobj.get("packNumber").toString()).execute();
+                    new AsyncGetProduct(jobj.get("productId").toString(), jobj.get("packNumber").toString(),jobj.get("completationDate").getAsString()).execute();
                 }
                 else{
                     startActivity(new Intent(getApplicationContext(), MainMenuActivity.class));
@@ -101,7 +104,7 @@ public class ProductInfoActivity extends AppCompatActivity {
         }
     }
 
-    public void getProduct(String productId, String packNumber) {
+    public void getProduct(String productId, String packNumber, String completationDate) {
         Call<Product> call = productService.getProduct(productId);
 
         call.enqueue(new Callback<Product>() {
@@ -112,7 +115,10 @@ public class ProductInfoActivity extends AppCompatActivity {
                     productName.setText(product.getName());
                     productCategory.setText(product.getCategory().getName());
                     productWeight.setText(String.valueOf(product.getWeight()));
-                    //productPickingTime.setText(product.getContent().getDate());
+                    String date = completationDate.split("T")[0];
+                    String time = completationDate.split("T")[1];
+                    String fullDate = date + " " + time;
+                    productPickingTime.setText(fullDate);
                     productPackageNumber.setText(packNumber);
                 }
                 else if(response.code() == 401)
@@ -132,10 +138,12 @@ public class ProductInfoActivity extends AppCompatActivity {
     public class AsyncGetProduct extends AsyncTask<Void, Void, Void> {
         String productId;
         String packNumber;
+        String completationDate;
 
-        public AsyncGetProduct(String productId, String packNumber) {
+        public AsyncGetProduct(String productId, String packNumber, String completationDate) {
             this.productId = productId;
             this.packNumber = packNumber;
+            this.completationDate = completationDate;
         }
 
 
@@ -148,7 +156,7 @@ public class ProductInfoActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             if(productId != null)
-                getProduct(productId, packNumber);
+                getProduct(productId, packNumber, completationDate);
             return null;
         }
 

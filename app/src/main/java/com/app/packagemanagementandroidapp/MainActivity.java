@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.app.packagemanagementandroidapp.model.Login;
+import com.app.packagemanagementandroidapp.model.Role;
 import com.app.packagemanagementandroidapp.model.authResponse;
 import com.app.packagemanagementandroidapp.service.ServiceGenerator;
 import com.app.packagemanagementandroidapp.service.UserService;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     EditText passwordInput;
     TextView errorLabel;
     ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +58,21 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), MainMenuActivity.class);
                     //jeśli użytkownik ma przypisaną rolę WORKER
 
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("TOKEN", "Bearer " + response.body().getJwttoken());
-                    editor.commit();
-                    startActivity(intent);
+                    boolean isWorker = false;
+                    for(Role role : response.body().getRoles()) {
+                        if(role.getName().contains("ROLE_ADMIN") || role.getName().contains("ROLE_WORKER"))
+                            isWorker = true;
+                    }
+
+                    if(!isWorker) {
+                        errorLabel.setVisibility(TextView.VISIBLE);
+                    }
+                    else {
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString("TOKEN", "Bearer " + response.body().getJwttoken());
+                        editor.commit();
+                        startActivity(intent);
+                    }
                 }
                 else{
                     errorLabel.setVisibility(TextView.VISIBLE);

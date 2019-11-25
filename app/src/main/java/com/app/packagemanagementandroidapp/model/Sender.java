@@ -15,5 +15,7 @@ public class Sender {
     private String street;
     private String postCode;
     private String phoneNumber;
+    private String houseNumber;
+    private String apartmentNumber;
     private String email;
 }

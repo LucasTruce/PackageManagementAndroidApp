@@ -234,15 +234,15 @@ public class PackageInfoActivity extends AppCompatActivity {
                     senderName.setText(pack.getSender().getName() + " " + pack.getSender().getLastName());
                     senderEmail.setText(pack.getSender().getEmail());
                     senderCompany.setText(pack.getSender().getCompanyName());
-                    senderCity.setText(pack.getSender().getCity());
-                    senderStreet.setText(pack.getSender().getPostCode() + ", " + pack.getSender().getStreet());
+                    senderCity.setText(pack.getSender().getPostCode() + ", " + pack.getSender().getCity());
+                    senderStreet.setText(pack.getSender().getStreet() + " " + pack.getSender().getHouseNumber() + "/" + pack.getSender().getApartmentNumber());
                     senderPhoneNumber.setText(pack.getSender().getPhoneNumber());
 
                     receiverName.setText(pack.getRecipient().getName() + " " + pack.getRecipient().getLastName());
                     receiverEmail.setText(pack.getRecipient().getEmail());
                     receiverCompany.setText(pack.getRecipient().getCompanyName());
-                    receiverCity.setText(pack.getRecipient().getCity());
-                    receiverStreet.setText(pack.getRecipient().getPostCode() + ", " + pack.getSender().getStreet());
+                    receiverCity.setText(pack.getRecipient().getPostCode() + ", " + pack.getRecipient().getCity());
+                    receiverStreet.setText(pack.getSender().getStreet() + " " + pack.getRecipient().getHouseNumber() + "/" + pack.getRecipient().getApartmentNumber());
                     receiverPhoneNumber.setText(pack.getRecipient().getPhoneNumber());
 
 

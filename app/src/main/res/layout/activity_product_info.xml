@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductInfoActivity">
+    tools:context=".ProductInfoActivity"
+    android:background="#555555">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeToRefreshProduct"
@@ -34,7 +35,8 @@
                         android:inputType="none"
                         android:textSize="20dp"
                         android:text="Informacje o produkcie"
-                        android:enabled="false"/>
+                        android:enabled="false"
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
                 <TableLayout
@@ -49,7 +51,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/productName"
@@ -57,7 +60,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-15dp"/>
+                            android:layout_marginStart="-15dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
 
                     <TableRow>
@@ -66,7 +70,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/productWeight"
@@ -74,7 +79,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-15dp" />
+                            android:layout_marginStart="-15dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                     <TableRow>
                         <TextView
@@ -82,7 +88,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/productCategory"
@@ -90,7 +97,8 @@
                             android:layout_column="2"
                             android:layout_marginStart="-15dp"
                             android:layout_marginEnd="15dp"
-                            android:textSize="14dp" />
+                            android:textSize="14dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                     <TableRow>
                         <TextView
@@ -98,7 +106,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/productPickingTime"
@@ -106,7 +115,8 @@
                             android:layout_column="2"
                             android:layout_marginEnd="15dp"
                             android:layout_marginStart="-15dp"
-                            android:textSize="14dp" />
+                            android:textSize="14dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
 
                     <TableRow>
@@ -115,7 +125,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/productPackageNumber"
@@ -123,7 +134,8 @@
                             android:layout_column="2"
                             android:layout_marginEnd="15dp"
                             android:layout_marginStart="-15dp"
-                            android:textSize="14dp" />
+                            android:textSize="14dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                 </TableLayout>
 

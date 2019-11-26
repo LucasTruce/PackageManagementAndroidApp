@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,6 +77,9 @@ public class PackageInfoActivity extends AppCompatActivity {
     TextView carCapacity;
     TextView carStatus;
 
+    TableRow tableRowSenderCompany;
+    TableRow tableRowRecipientCompany;
+
     Pack pack;
 
     boolean carScan = false;
@@ -128,6 +133,9 @@ public class PackageInfoActivity extends AppCompatActivity {
         carStatus = findViewById(R.id.packageCarStatus);
 
         refreshLayout = findViewById(R.id.swipeToRefresh);
+
+        tableRowRecipientCompany = findViewById(R.id.recipientCompany);
+        tableRowSenderCompany = findViewById(R.id.senderCompany);
 
         packScan = true;
         IntentIntegrator integrator = new IntentIntegrator(this);
@@ -222,6 +230,11 @@ public class PackageInfoActivity extends AppCompatActivity {
             public void onResponse(Call<Pack> call, Response<Pack> response) {
                 if(response.isSuccessful()){        //gdy dane zostały prawidłowo pobrane z serwera ustawiamy odpowiednie pola w aktywności
                     pack = response.body();
+                    if(pack.getSender().getCompanyName() != null)
+                        tableRowSenderCompany.setVisibility(View.VISIBLE);
+                    if(!pack.getRecipient().getCompanyName().equals(""))
+                        tableRowRecipientCompany.setVisibility(View.VISIBLE);
+
                     Toast.makeText(getApplicationContext(), "OPERACJA UDANA", Toast.LENGTH_SHORT).show();
                     packageNumber.setText(pack.getPackageNumber());
 

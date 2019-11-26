@@ -42,7 +42,6 @@ public class CarStatusDialog extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_car_status, null);
 
-
         radioGroup = view.findViewById(R.id.statusCarRadioGroup);
         Log.d("carId:", "" + car.getCarStatus().getId());
 

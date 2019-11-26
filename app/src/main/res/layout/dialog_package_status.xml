@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="#555555">
 
     <RadioGroup
         android:id="@+id/statusRadioGroup"
@@ -14,31 +15,35 @@
             android:id="@+id/inDelivery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:textColor="#FFFFFF"
             android:text="W dostawie" />
 
         <RadioButton
             android:id="@+id/inWarehouse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="W magazynie" />
+            android:text="W magazynie"
+            android:textColor="#FFFFFF"/>
 
         <RadioButton
             android:id="@+id/waitingForCourier"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="W oczekiwaniu na kuriera" />
+            android:text="W oczekiwaniu na kuriera"
+            android:textColor="#FFFFFF"/>
 
         <RadioButton
             android:id="@+id/wayToWarehouse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="W drodze do magazynu" />
+            android:text="W drodze do magazynu"
+            android:textColor="#FFFFFF"/>
 
         <RadioButton
             android:id="@+id/packageDelivered"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dostarczono" />
+            android:text="Dostarczono"
+            android:textColor="#FFFFFF"/>
     </RadioGroup>
 </RelativeLayout>

@@ -4,15 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    app:cardElevation="10dp"
-    android:layout_margin="10dp">
+    app:cardElevation="20dp"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="#555555"
+    app:cardCornerRadius="15dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="bottom"
-        android:background="@android:color/white"
         android:orientation="vertical"
+        android:padding="5dp"
         >
 
         <TextView
@@ -23,7 +25,9 @@
             android:layout_marginLeft="24dp"
             android:maxLines="1"
             android:textStyle="bold"
-            android:text="Numer paczki"/>
+            android:text="Numer paczki"
+            android:textColor="#FFFFFF"
+            />
 
         <TextView
             android:id="@+id/packageSenderTitle"
@@ -34,7 +38,8 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
             android:maxLines="1"
-            android:text="Dane nadawcy"/>
+            android:text="Dane nadawcy"
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/packageSenderAdress"
@@ -46,7 +51,8 @@
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="20-221, Lublin\nul. Lubartowska 10/45"/>
+            android:text="20-221, Lublin\nul. Lubartowska 10/45"
+            android:textColor="#FFFFFF"/>
 
         <TextView
             android:id="@+id/packageSenderPhone"

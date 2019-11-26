@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     tools:context=".MainMenuActivity"
-    android:background="#444444"
+    android:background="#555555"
     >
 
 
@@ -26,7 +26,8 @@
             android:layout_marginBottom="150dp"
             android:background="@drawable/btn"
             android:onClick="findPackagesForDelivery"
-            android:text="Znajdź paczki do odbioru" />
+            android:text="Znajdź paczki do odbioru"
+            android:textColor="#FFFFFF"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -43,7 +44,9 @@
                 android:background="@drawable/btn"
                 android:gravity="center"
                 android:onClick="packageScan"
-                android:text="Skanuj Paczkę" />
+                android:text="Skanuj Paczkę"
+                android:padding="5dp"
+                android:textColor="#FFFFFF"/>
 
             <Button
                 android:layout_width="125dp"
@@ -51,7 +54,9 @@
                 android:background="@drawable/btn"
                 android:gravity="center"
                 android:onClick="scanCar"
-                android:text="Skanuj samochód" />
+                android:text="Skanuj samochód"
+                android:padding="5dp"
+                android:textColor="#FFFFFF"/>
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -70,7 +75,9 @@
                 android:background="@drawable/btn"
                 android:gravity="center"
                 android:onClick="productScan"
-                android:text="Skanuj Produkt" />
+                android:text="Skanuj Produkt"
+                android:padding="5dp"
+                android:textColor="#FFFFFF"/>
 
             <Button
                 android:id="@+id/scanWarehouse"
@@ -79,7 +86,9 @@
                 android:background="@drawable/btn"
                 android:gravity="center"
                 android:onClick="warehouseScan"
-                android:text="Skanuj magazyn"/>
+                android:text="Skanuj magazyn"
+                android:padding="5dp"
+                android:textColor="#FFFFFF"/>
         </LinearLayout>
 
     </LinearLayout>

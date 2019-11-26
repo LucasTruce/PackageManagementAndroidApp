@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PackageInfoActivity">
+    tools:context=".PackageInfoActivity"
+    android:background="#555555">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeToRefresh"
@@ -28,13 +29,15 @@
                         android:id="@+id/packageInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="6dp"
                         android:layout_marginStart="6dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:enabled="false"
                         android:inputType="none"
-                        android:textSize="20dp"
                         android:text="Informacje o paczce"
-                        android:enabled="false"/>
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#FFFFFF"
+                        android:textSize="20dp" />
                 </LinearLayout>
 
                 <TableLayout
@@ -49,7 +52,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageNumberView"
@@ -57,7 +61,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-25dp"/>
+                            android:layout_marginStart="-25dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                     <TableRow>
                         <TextView
@@ -65,7 +70,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_marginStart="15dp"
-                            android:layout_column="1" />
+                            android:layout_column="1"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageStatusView"
@@ -73,7 +79,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-25dp"/>
+                            android:layout_marginStart="-25dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                     <TableRow>
                         <TextView
@@ -81,7 +88,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageSendDateView"
@@ -89,7 +97,7 @@
                             android:layout_column="2"
                             android:layout_marginStart="-25dp"
                             android:layout_marginEnd="15dp"
-                            android:textSize="14dp" />
+                            android:textSize="14dp" android:textColor="#FFFFFF"/>
                     </TableRow>
                     <TableRow>
                         <TextView
@@ -98,6 +106,7 @@
                             android:width="150dp"
                             android:layout_column="1"
                             android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"
                             />
 
                         <TextView
@@ -106,7 +115,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginStart="-25dp"
-                            android:layout_marginEnd="15dp"/>
+                            android:layout_marginEnd="15dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                 </TableLayout>
 
@@ -126,7 +136,8 @@
                         android:layout_marginStart="6dp"
                         android:inputType="none"
                         android:text="Nadawca"
-                        android:enabled="false"/>
+                        android:enabled="false"
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
                 <TableLayout
@@ -142,7 +153,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp" />
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageSenderName"
@@ -151,7 +163,8 @@
                             android:layout_marginStart="-35dp"
                             android:layout_marginEnd="15dp"
                             android:textSize="14dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
 
                     <TableRow>
@@ -160,7 +173,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageSenderEmail"
@@ -169,24 +183,31 @@
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_marginStart="-35dp"
-                            android:layout_marginEnd="15dp" />
+                            android:layout_marginEnd="15dp"
+                            android:textColor="#FFFFFF"/>
 
                     </TableRow>
-                    <TableRow>
+
+                    <TableRow
+                        android:id="@+id/senderCompany"
+                        android:visibility="gone">
+
                         <TextView
-                            android:text="Firma:"
-                            android:textSize="14dp"
-                            android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:width="150dp"
+                            android:text="Firma:"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14dp" />
 
                         <TextView
                             android:id="@+id/packageSenderCompany"
-                            android:textSize="14dp"
-                            android:layout_column="2"
                             android:layout_width="wrap_content"
+                            android:layout_column="2"
                             android:layout_marginStart="-35dp"
-                            android:layout_marginEnd="15dp" />
+                            android:layout_marginEnd="15dp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14dp" />
                     </TableRow>
                     <TableRow>
 
@@ -195,7 +216,8 @@
                             android:layout_marginStart="15dp"
                             android:width="150dp"
                             android:text="Miasto:"
-                            android:textSize="14dp" />
+                            android:textSize="14dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageSenderCity"
@@ -204,6 +226,7 @@
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
                             android:layout_marginStart="-35dp"
+                            android:textColor="#FFFFFF"
                             />
                     </TableRow>
                     <TableRow>
@@ -213,6 +236,7 @@
                             android:width="150dp"
                             android:layout_column="1"
                             android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"
                             />
 
                         <TextView
@@ -221,7 +245,7 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginStart="-35dp"
-
+                            android:textColor="#FFFFFF"
                             android:layout_marginEnd="15dp" />
                     </TableRow>
 
@@ -231,7 +255,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageSenderPhoneNumber"
@@ -240,6 +265,8 @@
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
                             android:layout_marginStart="-35dp"
+                            android:textColor="#FFFFFF"
+
                             />
                     </TableRow>
                 </TableLayout>
@@ -259,7 +286,8 @@
                         android:layout_marginStart="6dp"
                         android:inputType="none"
                         android:text="Odbiorca"
-                        android:enabled="false"/>
+                        android:enabled="false"
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
                 <TableLayout
@@ -275,7 +303,8 @@
                             android:layout_marginStart="15dp"
                             android:width="150dp"
                             android:text="Imię i nazwisko:"
-                            android:textSize="14dp" />
+                            android:textSize="14dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageReceiverName"
@@ -284,6 +313,7 @@
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
                             android:layout_marginStart="-35dp"
+                            android:textColor="#FFFFFF"
                             />
                     </TableRow>
 
@@ -293,7 +323,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageReceiverEmail"
@@ -302,24 +333,30 @@
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-35dp" />
+                            android:layout_marginStart="-35dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
-                    <TableRow>
+
+                    <TableRow
+                        android:id="@+id/recipientCompany"
+                        android:visibility="gone">
+
                         <TextView
-                            android:text="Firma:"
-                            android:textSize="14dp"
-                            android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:width="150dp"
+                            android:text="Firma:"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14dp" />
 
                         <TextView
                             android:id="@+id/packageReceiverCompany"
-                            android:textSize="14dp"
-                            android:layout_column="2"
                             android:layout_width="wrap_content"
-                            android:layout_marginEnd="15dp"
+                            android:layout_column="2"
                             android:layout_marginStart="-35dp"
-                            />
+                            android:layout_marginEnd="15dp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14dp" />
                     </TableRow>
                     <TableRow>
                         <TextView
@@ -327,7 +364,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageReceiverCity"
@@ -335,7 +373,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-35dp"/>
+                            android:layout_marginStart="-35dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                     <TableRow>
                         <TextView
@@ -343,7 +382,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageReceiverStreet"
@@ -351,7 +391,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-35dp"/>
+                            android:layout_marginStart="-35dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
 
                     <TableRow>
@@ -360,7 +401,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageReceiverPhoneNumber"
@@ -368,7 +410,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-35dp"/>
+                            android:layout_marginStart="-35dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                 </TableLayout>
 
@@ -376,7 +419,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_gravity="center">
+                    android:layout_gravity="center"
+                    >
 
                     <EditText
                         android:id="@+id/packageCarInfo"
@@ -387,7 +431,8 @@
                         android:layout_marginStart="6dp"
                         android:inputType="none"
                         android:text="Samochód"
-                        android:enabled="false"/>
+                        android:enabled="false"
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
                 <TableLayout
@@ -402,7 +447,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageCarBrand"
@@ -410,7 +456,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-15dp"/>
+                            android:layout_marginStart="-15dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
 
                     <TableRow>
@@ -419,7 +466,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageCarModel"
@@ -427,7 +475,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-15dp" />
+                            android:layout_marginStart="-15dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                     <TableRow>
                         <TextView
@@ -435,7 +484,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageCarLicensePlate"
@@ -443,7 +493,8 @@
                             android:layout_column="2"
                             android:layout_marginStart="-15dp"
                             android:layout_marginEnd="15dp"
-                            android:textSize="14dp" />
+                            android:textSize="14dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                     <TableRow>
                         <TextView
@@ -451,7 +502,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageCarCapacity"
@@ -459,7 +511,8 @@
                             android:layout_column="2"
                             android:layout_marginEnd="15dp"
                             android:layout_marginStart="-15dp"
-                            android:textSize="14dp" />
+                            android:textSize="14dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
 
 
@@ -471,7 +524,8 @@
                             android:layout_width="wrap_content"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageCarStatus"
@@ -479,7 +533,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-15dp" />
+                            android:layout_marginStart="-15dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                 </TableLayout>
 
@@ -498,7 +553,8 @@
                         android:layout_marginStart="6dp"
                         android:inputType="none"
                         android:text="Magazyn"
-                        android:enabled="false"/>
+                        android:enabled="false"
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
                 <TableLayout
@@ -513,7 +569,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageWarehousePhoneNumber"
@@ -521,7 +578,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="25dp"
-                            android:layout_marginStart="-25dp"/>
+                            android:layout_marginStart="-25dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                     <TableRow>
                         <TextView
@@ -529,7 +587,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageWarehouseCity"
@@ -537,7 +596,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-25dp"/>
+                            android:layout_marginStart="-25dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
 
                     <TableRow>
@@ -546,7 +606,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageWarehousePostalCode"
@@ -554,7 +615,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-25dp"/>
+                            android:layout_marginStart="-25dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                     <TableRow>
                         <TextView
@@ -562,7 +624,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageWarehouseStreet"
@@ -570,7 +633,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-25dp"/>
+                            android:layout_marginStart="-25dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                     <TableRow>
                         <TextView
@@ -578,7 +642,8 @@
                             android:textSize="14dp"
                             android:width="150dp"
                             android:layout_column="1"
-                            android:layout_marginStart="15dp"/>
+                            android:layout_marginStart="15dp"
+                            android:textColor="#FFFFFF"/>
 
                         <TextView
                             android:id="@+id/packageWarehouseDescription"
@@ -586,7 +651,8 @@
                             android:layout_column="2"
                             android:layout_width="wrap_content"
                             android:layout_marginEnd="15dp"
-                            android:layout_marginStart="-25dp"/>
+                            android:layout_marginStart="-25dp"
+                            android:textColor="#FFFFFF"/>
                     </TableRow>
                 </TableLayout>
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal|center_vertical"
     tools:context=".MainActivity"
-    android:background="#444444"
+    android:background="#555555"
     >
 
     <ImageView
@@ -58,7 +58,8 @@
         android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
         android:background="@drawable/btn"
-        android:text="Zaloguj" />
+        android:text="Zaloguj"
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/errorLogin"

@@ -15,14 +15,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-
-    <dimen name="activity_margin">16dp</dimen>
-    <dimen name="paddingItemDecorationDefault">8dp</dimen>
-    <dimen name="paddingItemDecorationEdge">24dp</dimen>
-    <dimen name="activity_margin_content">24dp</dimen>
-    <dimen name="activity_margin_half">8dp</dimen>
-    <dimen name="poster_thumb_width">72dp</dimen>
-    <dimen name="poster_thumb_height">96dp</dimen>
-    <dimen name="activity_margin_quarter">4dp</dimen>
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/myColor</item>
+        <item name="android:textColor">#125433</item>
+    </style>
 
 </resources>
